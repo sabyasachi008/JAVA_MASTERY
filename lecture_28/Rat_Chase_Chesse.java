@@ -34,10 +34,10 @@
 
 package lecture_28;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Rat_Chase_Chesse {
-	
+	 
 	static boolean found = false;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -80,11 +80,17 @@ public class Rat_Chase_Chesse {
 		maze[cr][cc] = 'X'; //Marked blocked so that doesnot reuse
 		ans[cr][cc] = 1; // assign where ever path is possible based in the above condition
 		// jis cell se char direction prr call lag raha h udhar 1 se replace kr de
-
-		ratinmaze(maze, cc, cr - 1, ans);
-		ratinmaze(maze, cc, cr + 1, ans);
-		ratinmaze(maze, cc - 1, cr, ans);
-		ratinmaze(maze, cc + 1, cr, ans);
+		
+		int[] r = {-1, 1, 0, 0};
+		int[] c = {0, 0, 1, -1};
+		for(int i = 0; i<c.length; i++) {
+			ratinmaze(maze, cc + c[i], cr + r[i], ans);
+		}
+		//instead of writing seperate recursive call we use only one for loop !!! 
+//		ratinmaze(maze, cc, cr - 1, ans);
+//		ratinmaze(maze, cc, cr + 1, ans);
+//		ratinmaze(maze, cc - 1, cr, ans);
+//		ratinmaze(maze, cc + 1, cr, ans);
 
 		// BackTrack for undoing..// so that if we dont get answer from any particular way we can reuse it
 		maze[cr][cc] = '0';
