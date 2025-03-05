@@ -1,11 +1,11 @@
 package lecture_29;
 
-import java.util.Scanner;
+
 
 public class N_Queen {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
+
+		int n = 4;
 		boolean[][] board = new boolean[n][n]; // to keep track of wether the queen is placed or not placed
 
 		nQueen(board, 0, n);
@@ -40,7 +40,6 @@ public class N_Queen {
 		while(r>=0) {
 			if(board[r][col] == true) {			//if queen present in any of the upward blocks
 				return false;
-				
 			}
 			r--;
 		}
@@ -61,7 +60,7 @@ public class N_Queen {
 		c = col;
 		
 		while(r>=0 && c>=0) {
-			if(board[r][c] == true) {
+			if(board[r][c] == true) {			//if queen present in any of the right diagonals
 				return false;
 			}
 			c--;
