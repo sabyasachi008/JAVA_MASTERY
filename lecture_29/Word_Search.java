@@ -43,7 +43,8 @@ public class Word_Search {
 		if(cc < 0 || cr <0 || cc>=board[0].length || cr>=board.length || word.charAt(windex) != board[cr][cc]) {
 			return false;
 		}
-		board[cr][cc] = '*';
+		board[cr][cc] = '*';							//To mark them visited so that they don't further take the 
+										//same character for recursion
 		int[] r = {-1, 1, 0, 0};
 		int[] c = {0, 0, 1, -1};
 		for(int i = 0; i<c.length; i++) {
@@ -52,7 +53,7 @@ public class Word_Search {
 				return ans;
 			}
 		}
-		board[cr][cc] = word.charAt(windex);
+		board[cr][cc] = word.charAt(windex);		//Backtrack it to the previous word character
 
 		return false;
 	}
