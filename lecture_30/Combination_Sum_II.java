@@ -1,56 +1,53 @@
-/*Given an array of distinct integers candidates and a target integer target, 
- * return a list of all unique combinations of candidates where the chosen numbers sum to target. 
- * You may return the combinations in any order.
- * The same number may be chosen from candidates an unlimited number of times. 
- * Two combinations are unique if the frequency of at least one of the chosen numbers is different.
- * The test cases are generated such that the number of unique combinations,
- * that sum up to target is less than 150 combinations for the given input.
- * 
+/*LeetCode :: 40 Combination Sum II 
+ * Given a collection of candidate numbers (candidates) and a target number (target), 
+ * find all unique combinations in candidates where the candidate numbers sum to target.
+ * Each number in candidates may only be used once in the combination.
+ * Note: The solution set must not contain duplicate combinations.
  * Example 1:
+ * Input: candidates = [10,1,2,7,6,1,5], target = 8
+ * Output: 
+ * [
+ * [1,1,6],
+ * [1,2,5],
+ * [1,7],
+ * [2,6]
+ * ]
  * 
- * Input: candidates = [2,3,6,7], target = 7
- * 
- * Output: [[2,2,3],[7]]
- * 
- * Explanation:
- * 2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
- * 7 is a candidate, and 7 = 7. 
- * These are the only two combinations.
- * 
- * Combinations means no repeated arrangements.*/
+ *			//There is no infinite supply of coins
+ * */
 
 package lecture_30;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 public class Combination_Sum_II {
 	public static void main(String[] args) {
-		int[] arr = {2,3,6,7};
-		int tar = 7;
-		List<Integer> li = new ArrayList<>();
-		List<List<Integer>> ans = new ArrayList<>();
 		
-		sumHlpr(arr, tar, li, ans, 0);
-		System.out.println(ans);
+		int [] coins = {10,1,2,7, 6, 1, 5};
+		int target = 8;
+		
+		Arrays.sort(coins);
+		
+		PrintAnswer(coins, target, "",0);
 	}
 	
-	public static void sumHlpr(int[] arr, int tar, List<Integer> li, List<List<Integer>> ans, int last) {
+	public static void PrintAnswer(int[] coin, int tar, String ans,int last) {
 		
 		if(tar == 0) {
-			ans.add(new ArrayList<Integer>(li));
-
+			System.out.println(ans);
 			return;
 		}
 		
-		
-		for(int i = last; i<arr.length; i++) {
-			if(tar >= arr[i]) {
-				li.add(arr[i]);
-				sumHlpr(arr, tar-arr[i], li, ans, i);	//The recursive call is placed from the i-th element itself because there is a unlimited supply of coins
-				li.remove(li.size() -1);			//We have to backtrack to remove duplicate elements
+		for(int i = last; i<coin.length; i++) {
+			if(i != last && coin[i] == coin[i-1]) {					//To avoid the formation of dupilicated elements
+				continue;								//stop the current recursive call and move the next recursive call
 				
+			}
+			
+			if(tar >= coin[i]) {
+				PrintAnswer(coin, tar-coin[i], ans+coin[i]+" ", i+1);			// We have limited supply so we will iterate from i+1 in order avoid duplicate combinations
+						//We cannot use the same coin in the same set so i+1
+				
+				//Jisko pick krle uske age se pick krnge
 			}
 		}
 	}
-
 }
