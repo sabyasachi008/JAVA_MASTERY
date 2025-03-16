@@ -37,7 +37,7 @@ public class Combination_Sum_II {
 		}
 		
 		for(int i = last; i<coin.length; i++) {
-			if(i != last && coin[i] == coin[i-1]) {					//To avoid the formation of dupilicated elements
+			if(i != last && coin[i] == coin[i-1]) {					//To avoid the formation of duplicate elements
 				continue;								//stop the current recursive call and move the next recursive call
 				
 			}
