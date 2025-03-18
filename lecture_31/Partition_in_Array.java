@@ -1,4 +1,4 @@
-
+ 
 /*You are given an element k and a array 
  * we have to place the element in the array in such a way 
  * that the small numbers from k is on the left side and the larger number are on the right side

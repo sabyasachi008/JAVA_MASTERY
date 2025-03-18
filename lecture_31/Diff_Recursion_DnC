@@ -1,0 +1,5 @@
+Q. Difference between Recursion and Divide & Conquer??
+A. >In recursion we get repetitive calls But in divide & conquer we don't get repetitive calls.
+		In recursion there is overlapping, Repetitive calls also called Problem overlapping 
+		In Divide and conquer there is no repetitive calls or problem overlapping
+		
