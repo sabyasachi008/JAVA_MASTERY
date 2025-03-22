@@ -108,28 +108,56 @@ public class Time_and_Space_Complexity {
 		}
 		
 		int val = 1000;
-		for(i = 1; i<=n; i++) {
-			for(int j = 1; j<= val; j++) {
+		for(i = 1; i<=n; i++) {						//Time complexity : O(N*val*val)
+			for(int j = 1; j<= val; j++) {				
 				for(k = 1; k<=j; k++) {
 					System.out.println();
 				}
 			}
 		}
 		
+		for(i = 1; i<=n; i++) {						//Outer loop -> N
+			for(int j = 1; j<= n; j +=1) {			//Inner loop -> LogX
+				System.out.println();				//Time complexity -> O(N*LogN)
+			}
+		}
 		
-		 
+		//Bubble Sort :->
+		int[] arr = {2, 4, 2, 1, 3};
+		for(int turn = 1; turn<arr.length; turn++) {
+			for(int j = 0; j<arr.length - turn; j++) {
+				if(arr[j]>arr[j+1]) {
+					int temp = arr[j];				//Time complexity -> O(N^2)
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				}
+			}
+		}
 		
+		//Selection Sort :->
+		for(i = 0; i<arr.length; i++) {
+			int mini = i;
+			for(int j = i+1; j<arr.length; j++) {
+				if(arr[j] < arr[mini]) {
+					mini = j;
+				}									//Time complexity -> O(N^2)
+			}
+			int temp = arr[i];
+			arr[i] = arr[mini];
+			arr[mini] = temp;
+		}
 		
+		//Insertion Sort :->
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		for(i = 0; i<arr.length; i++) {
+			
+			int item = arr[i];
+			int j = i - 1;
+			while(j>=0 && arr[j] > item) {			//Time complexity -> O(N^2)
+				arr[j+1] = arr[j];
+				arr[j] = item;
+				j--;
+			}
+		}
 	}
 }
