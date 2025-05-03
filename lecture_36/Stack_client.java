@@ -4,11 +4,10 @@ public class Stack_client {
 	
 	public static void main(String[] args) throws Exception {
 		
-		Stack st = new Stack(90);
-		System.out.println(st.size());				//Size when Stack doesnot have one element;
-		st.push(34);
+		Stack st = new Stack();	
 		st.push(56);
 		st.push(6);
+		st.push(2);
 		st.push(90);
 		st.push(1);
 		

@@ -18,7 +18,8 @@ public class Stack {
 		top = -1; // if no element present
 
 	}
-
+	
+	
 	// Stack s = new Stack(30) -> capacity - 30;
 	public Stack(int cap) {
 		arr = new int[cap]; // When the user specifies the size of the array
@@ -60,7 +61,7 @@ public class Stack {
 	}
 	
 	public int peek() throws Exception {						//Peek -> view the top element
-		if(isFull() == true) {
+		if(isEmpty() == true) {
 			throw new Exception("Stack is full");
 		}
 		int val = arr[top];
